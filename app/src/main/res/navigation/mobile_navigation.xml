@@ -22,4 +22,15 @@
         android:name="com.example.jboom.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_lifting"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_rotate"
+        android:name="com.example.jboom.ui.rotate.RotateFragment"
+        android:label="@string/menu_rotate"
+        tools:layout="@layout/fragment_rotate"/>
+<!--    <fragment-->
+<!--        android:id="@+id/nav_setting"-->
+<!--        android:name="com.example.jboom.ui.rotate.RotateFragment"-->
+<!--        android:label="设置"-->
+<!--        tools:layout="@layout/fragment_rotate"/>-->
 </navigation>
