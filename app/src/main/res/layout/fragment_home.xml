@@ -36,7 +36,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="说明：在十秒整的那一刹停下！"
+        android:text="说明：在十秒整的那一刹停下！\n点击右下角按钮开始"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -148,6 +148,7 @@ public class Chronometer extends TextView {
         }
     }
 
+    @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @SuppressLint("HandlerLeak")
         public void handleMessage(Message m) {

@@ -14,11 +14,11 @@
             android:title="@string/menu_clicks" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_lifting"
-            android:title="@string/menu_lifting" />
-        <item
-            android:id="@+id/nav_rotate"
-            android:icon="@drawable/ic_rotate"
-            android:title="@string/menu_rotate"/>
+            android:icon="@drawable/ic_ping"
+            android:title="@string/menu_ping" />
+<!--        <item-->
+<!--            android:id="@+id/nav_rotate"-->
+<!--            android:icon="@drawable/ic_rotate"-->
+<!--            android:title="@string/menu_rotate"/>-->
     </group>
 </menu>

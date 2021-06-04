@@ -1,7 +1,12 @@
 package com.example.jboom.ui.gallery;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -9,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +30,7 @@ public class GalleryFragment extends Fragment {
 
     private FragmentGalleryBinding binding;
     int c = 1;
-
+    SharedPreferences sharedPreferences;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -36,6 +42,9 @@ public class GalleryFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+
+        final int[] result = new int[1];
         TextView counter = (TextView)getActivity().findViewById(R.id.counter);
         TextView timeCounter = (TextView)getActivity().findViewById(R.id.time_counter);
         FloatingActionButton fab1 = (FloatingActionButton)getActivity().findViewById(R.id.fab1);
@@ -51,6 +60,7 @@ public class GalleryFragment extends Fragment {
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getActivity(), "准备好了吗", Toast.LENGTH_SHORT).show();
                 counter.setText("0");
                 timeCounter.setText("10s");
                 CountDownTimer countDownTimer0 = new CountDownTimer(4*1000, 1000) {
@@ -73,8 +83,22 @@ public class GalleryFragment extends Fragment {
 
                             @Override
                             public void onFinish() {
+                                int record1 = sharedPreferences.getInt("record1", 0);
                                 timeCounter.setText("时间到");
                                 button.setEnabled(false);
+                                result[0] = Integer.parseInt((String) (counter.getText()));
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder.setPositiveButton("确定", null);
+                                builder.setCancelable(false);
+                                if(result[0]>record1){
+                                    builder.setTitle("新纪录！");
+                                    builder.setMessage("总共点击"+result[0]+"下！");
+                                    sharedPreferences.edit().putInt("record1", result[0]).commit();
+                                }else{
+                                    builder.setTitle("纪录："+record1);
+                                    builder.setMessage("本次成绩："+result[0]);
+                                }
+                                builder.show();
                             }
                         };
                         countDownTimer.start();

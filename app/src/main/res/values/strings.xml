@@ -14,4 +14,6 @@
     <string name="menu_rotate">玩转手机</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_ping">高ping战士</string>
+    <string name="toFeed">我要包养开发者</string>
 </resources>
