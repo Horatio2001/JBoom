@@ -64,6 +64,7 @@ public class SlideshowFragment extends Fragment {
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fab2.setEnabled(false);
                 display.setText("0");
                 interval = (long)(Math.random()*5000+3000);
                 button.setEnabled(true);
@@ -74,6 +75,7 @@ public class SlideshowFragment extends Fragment {
                     @Override
                     public void onFinish() {
                         display.setText("1");
+                        fab2.setEnabled(true);
                     }
                 };
                 startTime[0] = System.nanoTime();

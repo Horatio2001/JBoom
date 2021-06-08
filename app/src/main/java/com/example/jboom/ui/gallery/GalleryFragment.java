@@ -60,6 +60,7 @@ public class GalleryFragment extends Fragment {
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fab1.setEnabled(false);
                 Toast.makeText(getActivity(), "准备好了吗", Toast.LENGTH_SHORT).show();
                 counter.setText("0");
                 timeCounter.setText("10s");
@@ -86,6 +87,7 @@ public class GalleryFragment extends Fragment {
                                 int record1 = sharedPreferences.getInt("record1", 0);
                                 timeCounter.setText("时间到");
                                 button.setEnabled(false);
+                                fab1.setEnabled(true);
                                 result[0] = Integer.parseInt((String) (counter.getText()));
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                 builder.setPositiveButton("确定", null);
